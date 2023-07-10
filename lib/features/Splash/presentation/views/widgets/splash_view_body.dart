@@ -1,8 +1,44 @@
 import 'package:bookly_app/core/utils/assets.dart';
+import 'package:bookly_app/features/Splash/presentation/views/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
 
-class SplashViewBody extends StatelessWidget {
+//if i will make animation so used statefulWidget (any changes during running  & have variables will take value)
+class SplashViewBody extends StatefulWidget {
   const SplashViewBody({super.key});
+
+  @override
+  State<SplashViewBody> createState() => _SplashViewBodyState();
+}
+
+//SingleTickerProviderStateMixin => to decide when make a refresh (to make animation move every second)
+class _SplashViewBodyState extends State<SplashViewBody>
+    with SingleTickerProviderStateMixin {
+  //animation from 0 => 1 in AnimationController
+  late AnimationController animationController;
+  //to get values from animationController (from 0 to 1) and get the values that i want (from 0 to 60 in sec)above the animationController
+  late Animation<Offset> slidingAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    animationController = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 1),
+    );
+    //to get values offset from animationController (Offset.zero => to back to normal position) (will return animation object)
+    slidingAnimation =
+        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
+            .animate(animationController);
+    //when value changes make setState()
+    animationController.forward();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    //must dispose the controller to prevent memory leaks
+    animationController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,10 +51,8 @@ class SplashViewBody extends StatelessWidget {
         const SizedBox(
           height: 4,
         ),
-        const Text(
-          'Read Free Books',
-          textAlign: TextAlign.center,
-        ),
+        //to just rebuild this ui not all the app
+        SlidingText(slidingAnimation: slidingAnimation),
       ],
     );
   }
