@@ -1,4 +1,5 @@
 import 'package:bookly_app/constants.dart';
+import 'package:bookly_app/features/home/presentation/views/home_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 
@@ -24,7 +25,7 @@ class BooklyApp extends StatelessWidget {
   }
 }
 /*
-  MVVM => Model View Model
+  MVVM => Model View Model (2 folders => presentation (view_model & views), data (models))
     make presentation (folder) have => viewModels & views (by default put widgets folder in views)
 
 */
