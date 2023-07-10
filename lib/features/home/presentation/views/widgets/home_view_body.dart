@@ -27,8 +27,32 @@ class HomeViewBody extends StatelessWidget {
             'Best Seller',
             style: Styles.titelMedium,
           ),
-        )
+        ),
+        BestSellerListViewItem(),
       ],
+    );
+  }
+}
+
+class BestSellerListViewItem extends StatelessWidget {
+  const BestSellerListViewItem({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0),
+      child: SizedBox(
+        height: 130,
+        child: Row(
+          children: [
+            FeaturedListViewItem(
+              borderRadiusSize: 8,
+              aspectRatioSize: 0.625,
+            ),
+            Column(),
+          ],
+        ),
+      ),
     );
   }
 }

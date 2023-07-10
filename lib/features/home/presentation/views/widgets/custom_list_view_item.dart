@@ -3,17 +3,18 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/assets.dart';
 
 class FeaturedListViewItem extends StatelessWidget {
-  const FeaturedListViewItem({super.key});
-
+  const FeaturedListViewItem({super.key, required this.borderRadiusSize, required this.aspectRatioSize});
+  final double borderRadiusSize;
+  final double aspectRatioSize;
   @override
   Widget build(BuildContext context) {
     //to save the image (the aspect ration of image and be responsive)
     return AspectRatio(
       //width / height
-      aspectRatio: 2.7 / 4,
+      aspectRatio: aspectRatioSize,
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(borderRadiusSize),
           color: Colors.red,
           image: const DecorationImage(
             fit: BoxFit.fill,
