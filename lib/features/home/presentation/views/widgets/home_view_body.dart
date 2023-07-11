@@ -1,11 +1,8 @@
-import 'package:bookly_app/constants.dart';
-import 'package:bookly_app/core/utils/assets.dart';
-import 'package:bookly_app/features/home/presentation/views/widgets/custom_list_view_item.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import '../../../../../core/utils/styles.dart';
 import 'best_seller_list_view.dart';
+import 'best_seller_list_view_item.dart';
 import 'custom_app_bar.dart';
 import 'featured_list_view.dart';
 
@@ -14,29 +11,49 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CustomAppbBar(),
-        //must be specified height or let it expand as needed (will get Error if didn't use it (Expanded or but it in SizedBox))
-        FeaturedBooksListView(),
-        SizedBox(
-          height: 50,
-        ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.0),
-          child: Text(
-            'Best Seller',
-            style: Styles.textStyle18,
+    //CustomScrollView => to make nestedScroll
+    return const CustomScrollView(
+      //slivers => any widget that i want to scroll (by default scroll horzonitaly)(must put sliver no widget directly)
+      //so put widget inside sliver
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              CustomAppbBar(),
+              //must be specified height or let it expand as needed (will get Error if didn't use it (Expanded or but it in SizedBox))
+              FeaturedBooksListView(),
+              SizedBox(
+                height: 50,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 30.0),
+                child: Text(
+                  'Best Seller',
+                  style: Styles.textStyle18,
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+            ],
           ),
         ),
-        SizedBox(
-          height: 20,
-        ),
-        BestSellerListViewItem(),
+        SliverToBoxAdapter(
+          child: BestSellerListView(),
+        )
       ],
     );
   }
 }
 
+/*
+CustomScrollView (SliverToBoxAdapter)
+  show all items like column (but not the items scroll) so i can scroll all the ui so to solver problem of listView.builder
+  shrinkWrap:true (to take the size of childs and not be scrollable and just items with fixed height)
+  physics: const NeverScrollableScrollPhysics() (to prevent scroll because CustomScrollView is scrollable)
 
+  SLiverFillRemaining (if the listView is last item)
+    so can use expanded as well and don't build all items once(shrinkWrap), so the app will be better performance
+
+*/
