@@ -6,7 +6,7 @@ import 'package:go_router/go_router.dart';
 import '../../../../../constants.dart';
 import '../../../../../core/utils/styles.dart';
 import 'book_rating.dart';
-import 'custom_list_view_item.dart';
+import 'custom_book_item.dart';
 
 class BestSellerListViewItem extends StatelessWidget {
   const BestSellerListViewItem({super.key});
@@ -23,7 +23,7 @@ class BestSellerListViewItem extends StatelessWidget {
           height: 130,
           child: Row(
             children: [
-              const FeaturedListViewItem(
+              const CustomBookImage(
                 borderRadiusSize: 8,
                 aspectRatioSize: 0.625,
               ),

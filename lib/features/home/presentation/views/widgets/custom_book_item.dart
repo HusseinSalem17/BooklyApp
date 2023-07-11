@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/assets.dart';
 
-class FeaturedListViewItem extends StatelessWidget {
-  const FeaturedListViewItem({super.key, required this.borderRadiusSize, required this.aspectRatioSize});
+class CustomBookImage extends StatelessWidget {
+  const CustomBookImage(
+      {super.key,
+      required this.borderRadiusSize,
+      required this.aspectRatioSize});
   final double borderRadiusSize;
   final double aspectRatioSize;
   @override
