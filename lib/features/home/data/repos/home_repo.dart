@@ -7,6 +7,6 @@ abstract class HomeRepo {
   //Either => (can return 2 types) left side => for errors , right side => return type right
   //there's many types of errors like (internet or ServerFail or chached and so on ..), so made Failure class
   // for all errors would happen
-  Future<Either<Failure, List<BookModel>>> fetchBestSellerBooks();
+  Future<Either<Failure, List<BookModel>>> fetchNewestBooks();
   Future<Either<Failure, List<BookModel>>> fetchFeaturedBooks();
 }
