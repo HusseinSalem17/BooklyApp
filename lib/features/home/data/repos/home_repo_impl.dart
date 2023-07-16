@@ -4,6 +4,7 @@ import 'package:bookly_app/core/utils/api_service.dart';
 import 'package:bookly_app/features/home/data/models/book_model/book_model.dart';
 
 import 'package:dartz/dartz.dart';
+import 'package:dio/dio.dart';
 
 import 'home_repo.dart';
 
@@ -24,7 +25,17 @@ class HomeRepoImpl implements HomeRepo {
       //return for rightSide books (right return)
       return right(books);
     } catch (e) {
-      return left(ServerFailure());
+      //if i had status code not 200 right (throw dio error)
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioError(e),
+        );
+      }
+      return left(
+        ServerFailure(
+          e.toString(),
+        ),
+      );
     }
   }
 
