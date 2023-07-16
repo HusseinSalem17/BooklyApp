@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import '../../../../../core/utils/assets.dart';
 
 class CustomBookImage extends StatelessWidget {
-  const CustomBookImage(
-      {super.key,
-      required this.borderRadiusSize,
-      required this.aspectRatioSize});
+  const CustomBookImage({
+    super.key,
+    required this.borderRadiusSize,
+    required this.aspectRatioSize,
+  });
   final double borderRadiusSize;
   final double aspectRatioSize;
   @override

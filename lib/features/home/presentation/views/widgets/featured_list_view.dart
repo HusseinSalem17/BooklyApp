@@ -16,7 +16,7 @@ class FeaturedBooksListView extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 8.0),
             child: CustomBookImage(
               borderRadiusSize: 16,
-              aspectRatioSize: 0.675,
+              aspectRatioSize: 0.65,
             ),
           );
         }),
