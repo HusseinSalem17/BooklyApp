@@ -17,7 +17,8 @@ class BookDetailsSection extends StatelessWidget {
           //to save the aspect ratio of image (in all devices to be the aspect ratio be good for all devices)
           padding: EdgeInsets.symmetric(horizontal: width * .2),
           child: const CustomBookImage(
-              borderRadiusSize: 20, aspectRatioSize: 2.7 / 4),
+            imageUrl: 'https://images.unsplash.com/photo-1575936123452-b67c3203c357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aW1hZ2V8ZW58MHx8MHx8fDA%3D&w=1000&q=80',
+              borderRadiusSize: 20, aspectRatioSize: 2.7 / 4,),
         ),
         const SizedBox(
           height: 43,

@@ -7,7 +7,10 @@ class CustomBookImage extends StatelessWidget {
     super.key,
     required this.borderRadiusSize,
     required this.aspectRatioSize,
+    required this.imageUrl,
   });
+
+  final String imageUrl;
   final double borderRadiusSize;
   final double aspectRatioSize;
   @override
@@ -19,10 +22,9 @@ class CustomBookImage extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(borderRadiusSize),
-          color: Colors.red,
-          image: const DecorationImage(
+          image: DecorationImage(
             fit: BoxFit.fill,
-            image: AssetImage(AssetsData.testImage),
+            image: NetworkImage(imageUrl),
           ),
         ),
       ),
