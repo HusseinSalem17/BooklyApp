@@ -17,14 +17,18 @@ class _BookDetailsViewState extends State<BookDetailsView> {
   void initState() {
     super.initState();
     //triger fetchSimilarBooks in his screen using statefulWidget (because it works 2 views (newestBooks & featuredBooks))
-    BlocProvider.of<SimilarBooksCubit>(context).fetchSimilarBooks(category: widget.bookModel.volumeInfo.categories![0]);
+    BlocProvider.of<SimilarBooksCubit>(context).fetchSimilarBooks(
+        category: widget.bookModel.volumeInfo.categories![0]);
   }
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       //SafeArea(Widget) => ensure all my ui start after status bar
-      body: SafeArea(child: BookDetailsViewBody()),
+      body: SafeArea(
+          child: BookDetailsViewBody(
+        bookModel: widget.bookModel,
+      )),
     );
   }
 }
