@@ -1,6 +1,5 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-
-import '../../../../../core/utils/assets.dart';
 
 class CustomBookImage extends StatelessWidget {
   const CustomBookImage({
@@ -16,15 +15,20 @@ class CustomBookImage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //to save the image (the aspect ration of image and be responsive)
-    return AspectRatio(
-      //width / height
-      aspectRatio: aspectRatioSize,
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(borderRadiusSize),
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: NetworkImage(imageUrl),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(16),
+      child: AspectRatio(
+        //width / height
+        aspectRatio: aspectRatioSize,
+        //CachedNetworkImage => to cach the images and show it with good fading and handling loading and failure
+        child: CachedNetworkImage(
+          imageUrl: imageUrl,
+          placeholder: (context, url) => const Center(
+            child: CircularProgressIndicator(),
+          ),
+          fit: BoxFit.fill,
+          errorWidget: (context, url, error) => const Icon(
+            Icons.error,
           ),
         ),
       ),

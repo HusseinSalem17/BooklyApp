@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../core/utils/styles.dart';
-import 'best_seller_list_view.dart';
+import 'newest_books_list_view.dart';
 import 'custom_app_bar.dart';
 import 'featured_list_view.dart';
 
@@ -12,6 +12,7 @@ class HomeViewBody extends StatelessWidget {
   Widget build(BuildContext context) {
     //CustomScrollView => to make nestedScroll
     return const CustomScrollView(
+      physics: BouncingScrollPhysics(),
       //slivers => any widget that i want to scroll (by default scroll horzonitaly)(must put sliver no widget directly)
       //so put widget inside sliver
       slivers: [
@@ -28,7 +29,7 @@ class HomeViewBody extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30.0),
                 child: Text(
-                  'Best Seller',
+                  'Newest Books',
                   style: Styles.textStyle18,
                 ),
               ),
@@ -41,7 +42,7 @@ class HomeViewBody extends StatelessWidget {
         SliverToBoxAdapter(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 30.0),
-            child: BestSellerListView(),
+            child: NewestBooksListView(),
           ),
         )
       ],
